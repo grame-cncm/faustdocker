@@ -1,14 +1,16 @@
-build:
-	docker build --squash -t grame/faust .
+FAUSTGH="ghcr.io/orlarey/faust"
+
+image:
+	docker build -t $(FAUSTGH):latest .
 
 push:
-	docker push grame/faust
+	docker push $(FAUSTGH):latest
 
 test:
-	docker run grame/faust
+	docker run $(FAUSTGH):latest
 
 help:
-	@echo " 'build' : builds the docker image"
+	@echo " 'image' : builds the docker image"
 	@echo " 'test'  : run the docker image, equivalent to faust -v"
 	@echo " 'push'  : push the docker image to docker repository"
  
